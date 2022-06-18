@@ -19,14 +19,9 @@ RUN apt install -y \
 	libedata-cal2.0-dev \
 	evolution-dev
 
-RUN git clone https://github.com/39aldo39/libdecsync
-RUN git clone --recursive https://github.com/39aldo39/Evolution-DecSync
+USER 1000:1000
+COPY build.sh /target/build.sh
+#RUN chmod +x /target/build.sh
+WORKDIR /target
 
-#build and install libdecsync
-WORKDIR /libdecsync
-RUN make
-RUN make install
-
-#build meson. Build at /Evolution-DecSync/build/
-WORKDIR /Evolution-DecSync
-CMD meson build 
+CMD  /bin/bash

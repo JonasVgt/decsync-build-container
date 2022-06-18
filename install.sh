@@ -5,7 +5,8 @@
 
 
 #build
-docker run -v "(pwd)/build:/Evolution-DecSync/build" build-decsync-evolution
+docker build decsync-evolution -t build-decsync-evolution
+docker run -v "$(pwd)/build:/Evolution-DecSync/build" build-decsync-evolution
 sudo chown -R jonas:jonas build
 
 #install
